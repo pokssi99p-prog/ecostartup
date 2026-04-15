@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoStudent — Платформа для студенческих эко-инициатив</title>
-    <meta name="description" content="Образовательная платформа для студентов, занимающихся экологией и устойчивым развитием">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+    <title>EcoStartup — Экологичный бизнес</title>
+    <meta name="description" content="Путь от стартапа к экологичному бизнесу">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/fontsource-roboto@4.0.0/index.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -21,9 +18,7 @@
                             DEFAULT: '#2E7D32',
                             dark: '#1B5E20',
                             bg: '#F1F8E9',
-                            accent: '#66BB6A',
-                            lime: '#CDDC39',
-                            teal: '#009688'
+                            accent: '#66BB6A'
                         }
                     },
                     fontFamily: {
@@ -31,9 +26,7 @@
                     },
                     animation: {
                         'float': 'float 3s ease-in-out infinite',
-                        'slide-up': 'slideUp 0.6s ease forwards',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'spin-slow': 'spin 8s linear infinite'
+                        'slide-up': 'slideUp 0.6s ease forwards'
                     }
                 }
             }
@@ -133,104 +126,6 @@
             opacity: 0.1;
             pointer-events: none;
         }
-        /* Eco-specific styles */
-        .eco-badge {
-            background: linear-gradient(135deg, #CDDC39, #8BC34A);
-            animation: pulse-slow 2s infinite;
-        }
-        .map-container {
-            height: 400px;
-            border-radius: 1rem;
-            z-index: 1;
-        }
-        .stat-card {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.9);
-        }
-        .challenge-card {
-            transition: all 0.3s ease;
-        }
-        .challenge-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 35px rgba(46, 125, 50, 0.2);
-        }
-        .level-indicator {
-            transition: all 0.5s ease;
-        }
-        .achievement-badge {
-            filter: grayscale(1);
-            opacity: 0.5;
-            transition: all 0.3s ease;
-        }
-        .achievement-badge.unlocked {
-            filter: grayscale(0);
-            opacity: 1;
-            animation: float 2s ease-in-out infinite;
-        }
-        .event-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        .event-card:hover::before {
-            left: 100%;
-        }
-        .resource-tag {
-            transition: all 0.2s ease;
-        }
-        .resource-tag:hover {
-            transform: translateX(5px);
-        }
-        .quiz-option {
-            transition: all 0.2s ease;
-        }
-        .quiz-option:hover {
-            background: rgba(46, 125, 50, 0.1);
-            transform: translateX(10px);
-        }
-        .quiz-option.selected {
-            background: rgba(46, 125, 50, 0.2);
-            border-color: #2E7D32;
-        }
-        .quiz-option.correct {
-            background: rgba(76, 175, 80, 0.3);
-            border-color: #4CAF50;
-        }
-        .quiz-option.incorrect {
-            background: rgba(244, 67, 54, 0.3);
-            border-color: #F44336;
-        }
-        .carbon-footprint-meter {
-            transition: all 0.5s ease;
-        }
-        .impact-stat {
-            counter-reset: impact-counter;
-        }
-        .impact-stat span {
-            counter-increment: impact-counter;
-        }
-        .team-member-card {
-            transition: all 0.3s ease;
-        }
-        .team-member-card:hover {
-            transform: translateY(-5px);
-        }
-        .donation-progress {
-            transition: width 1s ease-in-out;
-        }
-        .volunteer-hours-ring {
-            transform: rotate(-90deg);
-            transition: stroke-dashoffset 1s ease-in-out;
-        }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-white overflow-x-hidden">
@@ -239,36 +134,27 @@
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center shadow-lg animate-float">
-                    <span class="text-2xl">🌱</span>
+                    <span class="text-2xl">🌿</span>
                 </div>
                 <div>
-                    <h1 class="text-xl font-bold gradient-text">EcoStudent</h1>
-                    <p class="text-xs text-gray-500">Платформа для студентов-экологов</p>
+                    <h1 class="text-xl font-bold gradient-text">EcoStartup</h1>
                 </div>
             </div>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#dashboard" class="text-gray-600 hover:text-eco font-medium transition relative group">
-                    Дашборд
+            <nav class="hidden md:flex space-x-8">
+                <a href="#benefits" class="text-gray-600 hover:text-eco font-medium transition relative group">
+                    Преимущества
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 gradient-bg transition-all group-hover:w-full"></span>
                 </a>
-                <a href="#learning" class="text-gray-600 hover:text-eco font-medium transition relative group">
-                    Обучение
+                <a href="#pathway" class="text-gray-600 hover:text-eco font-medium transition relative group">
+                    Путь
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 gradient-bg transition-all group-hover:w-full"></span>
                 </a>
-                <a href="#projects" class="text-gray-600 hover:text-eco font-medium transition relative group">
-                    Проекты
+                <a href="#cases" class="text-gray-600 hover:text-eco font-medium transition relative group">
+                    Кейсы
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 gradient-bg transition-all group-hover:w-full"></span>
                 </a>
-                <a href="#challenges" class="text-gray-600 hover:text-eco font-medium transition relative group">
-                    Челленджи
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 gradient-bg transition-all group-hover:w-full"></span>
-                </a>
-                <a href="#events" class="text-gray-600 hover:text-eco font-medium transition relative group">
-                    События
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 gradient-bg transition-all group-hover:w-full"></span>
-                </a>
-                <a href="#community" class="text-gray-600 hover:text-eco font-medium transition relative group">
-                    Сообщество
+                <a href="#contact" class="text-gray-600 hover:text-eco font-medium transition relative group">
+                    Контакты
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 gradient-bg transition-all group-hover:w-full"></span>
                 </a>
             </nav>
@@ -281,12 +167,10 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t shadow-lg">
             <div class="px-4 py-4 space-y-3">
-                <a href="#dashboard" class="block text-gray-600 hover:text-eco font-medium py-2" onclick="toggleMobileMenu()">Дашборд</a>
-                <a href="#learning" class="block text-gray-600 hover:text-eco font-medium py-2" onclick="toggleMobileMenu()">Обучение</a>
-                <a href="#projects" class="block text-gray-600 hover:text-eco font-medium py-2" onclick="toggleMobileMenu()">Проекты</a>
-                <a href="#challenges" class="block text-gray-600 hover:text-eco font-medium py-2" onclick="toggleMobileMenu()">Челленджи</a>
-                <a href="#events" class="block text-gray-600 hover:text-eco font-medium py-2" onclick="toggleMobileMenu()">События</a>
-                <a href="#community" class="block text-gray-600 hover:text-eco font-medium py-2" onclick="toggleMobileMenu()">Сообщество</a>
+                <a href="#benefits" class="block text-gray-600 hover:text-eco font-medium py-2" onclick="toggleMobileMenu()">Преимущества</a>
+                <a href="#pathway" class="block text-gray-600 hover:text-eco font-medium py-2" onclick="toggleMobileMenu()">Путь</a>
+                <a href="#cases" class="block text-gray-600 hover:text-eco font-medium py-2" onclick="toggleMobileMenu()">Кейсы</a>
+                <a href="#contact" class="block text-gray-600 hover:text-eco font-medium py-2" onclick="toggleMobileMenu()">Контакты</a>
             </div>
         </div>
     </header>
@@ -305,47 +189,49 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="fade-in-section">
                     <div class="inline-block bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
-                        🌱 Образовательная платформа для студентов
+                        🌿 Экологичный бизнес будущего
                     </div>
                     <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                        Изучай экологию,<br/>
-                        <span class="text-green-200">меняй мир к лучшему</span>
+                        От стартапа к<br/>
+                        <span class="text-green-200">экологичному бизнесу</span>
                     </h2>
                     <p class="text-lg mb-8 opacity-95 leading-relaxed max-w-xl">
-                        Присоединяйся к сообществу студентов-экологов! Участвуй в проектах, проходи обучение, отслеживай свой экослед и получай достижения за вклад в устойчивое развитие.
+                        Пройдите путь от обычной компании до лидера устойчивого развития с высоким экологическим рейтингом. Пошаговый план трансформации вашего бизнеса.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#dashboard" class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-center shadow-xl">
-                            <span>📊 Мой прогресс</span>
+                        <a href="#contact" class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-center shadow-xl">
+                            <span>🚀 Рассчитать экослед</span>
                         </a>
-                        <a href="#projects" class="border-2 border-white/50 px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition text-center backdrop-blur">
-                            <span>🚀 Начать проект</span>
+                        <a href="#pathway" class="border-2 border-white/50 px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition text-center backdrop-blur">
+                            <span>📖 Узнать больше</span>
                         </a>
                     </div>
-                    <div class="mt-12 grid grid-cols-3 gap-6 text-center">
-                        <div class="bg-white/10 backdrop-blur rounded-xl p-4">
-                            <div class="text-3xl font-bold">500+</div>
-                            <div class="text-sm opacity-80">Студентов</div>
+                    <div class="mt-12 flex items-center space-x-8 text-sm opacity-80">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            <span>5 этапов</span>
                         </div>
-                        <div class="bg-white/10 backdrop-blur rounded-xl p-4">
-                            <div class="text-3xl font-bold">50+</div>
-                            <div class="text-sm opacity-80">Проектов</div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            <span>3 преимущества</span>
                         </div>
-                        <div class="bg-white/10 backdrop-blur rounded-xl p-4">
-                            <div class="text-3xl font-bold">10т+</div>
-                            <div class="text-sm opacity-80">кг CO₂ сэкономлено</div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            <span>Бесплатно</span>
                         </div>
                     </div>
                 </div>
                 <div class="hidden md:block fade-in-section">
                     <div class="relative">
                         <div class="absolute inset-0 gradient-bg rounded-3xl transform rotate-6 opacity-30"></div>
-                        <div class="bg-white/10 backdrop-blur rounded-3xl shadow-2xl w-full h-96 relative z-10 flex items-center justify-center">
-                            <div class="text-center">
-                                <span class="text-8xl block mb-4">🌍</span>
-                                <div class="text-2xl font-bold">Вместо слов — действия!</div>
-                                <div class="text-green-200 mt-2">Присоединяйся к движению</div>
-                            </div>
+                        <div class="bg-white/10 backdrop-blur rounded-3xl shadow-2xl w-full h-80 relative z-10 flex items-center justify-center">
+                            <span class="text-8xl">🌍</span>
                         </div>
                     </div>
                 </div>
@@ -353,151 +239,190 @@
         </div>
     </section>
 
-    <!-- Dashboard Section -->
-    <section id="dashboard" class="py-20 bg-eco-bg">
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 bg-eco-bg relative">
         <div class="container mx-auto px-4 fade-in-section">
             <div class="text-center mb-16">
                 <div class="inline-block bg-eco text-white px-4 py-2 rounded-full text-sm mb-4">
-                    📊 Личный кабинет
+                    💡 Почему это важно
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-eco-dark mb-4">Твой экологический прогресс</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-eco-dark mb-4">Почему экологический рейтинг важен?</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto text-lg">
-                    Отслеживай свои достижения, уровень и вклад в защиту окружающей среды
+                    Высокий эко-рейтинг открывает новые возможности для роста и развития вашего бизнеса
                 </p>
             </div>
-
-            <div class="grid md:grid-cols-4 gap-6 mb-12">
-                <!-- Level Card -->
-                <div class="bg-white rounded-2xl p-6 shadow-xl card-hover border border-eco-bg">
-                    <div class="text-center">
-                        <div class="w-24 h-24 mx-auto mb-4 relative">
-                            <svg class="w-24 h-24 transform -rotate-90">
-                                <circle cx="48" cy="48" r="40" stroke="#E5E7EB" stroke-width="8" fill="none"/>
-                                <circle cx="48" cy="48" r="40" stroke="#2E7D32" stroke-width="8" fill="none" 
-                                    stroke-dasharray="251.2" stroke-dashoffset="62.8" class="level-indicator"/>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl card-hover shadow-xl border border-eco-bg">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <span class="text-3xl">💰</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-eco-dark mb-3">Финансы</h3>
+                    <p class="text-gray-600 mb-4">
+                        Снижение операционных расходов до 30% за счёт энергоэффективности и оптимизации ресурсов
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-eco mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                             </svg>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="text-center">
-                                    <div class="text-2xl font-bold text-eco-dark">3</div>
-                                    <div class="text-xs text-gray-500">уровень</div>
+                            Налоговые льготы
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-eco mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Доступ к «зелёным» кредитам
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-eco mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Снижение штрафов
+                        </li>
+                    </ul>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl card-hover shadow-xl border border-eco-bg">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <span class="text-3xl">👥</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-eco-dark mb-3">Клиенты</h3>
+                    <p class="text-gray-600 mb-4">
+                        73% потребителей готовы платить больше за экологичные продукты и услуги
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-eco mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Лояльность аудитории
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-eco mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Укрепление репутации
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-eco mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Новые рынки сбыта
+                        </li>
+                    </ul>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl card-hover shadow-xl border border-eco-bg">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <span class="text-3xl">📊</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-eco-dark mb-3">Конкуренция</h3>
+                    <p class="text-gray-600 mb-4">
+                        Преимущество при участии в тендерах и привлечении инвестиций
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-eco mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Приоритет в госзакупках
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-eco mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Интерес инвесторов
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 text-eco mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Партнёрство с лидерами
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pathway Section -->
+    <section id="pathway" class="py-20 bg-white relative">
+        <div class="container mx-auto px-4 fade-in-section">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-eco text-white px-4 py-2 rounded-full text-sm mb-4">
+                    🎯 Пошаговый план
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-eco-dark mb-4">5 этапов к экологичному бизнесу</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    Пошаговый план трансформации вашего стартапа в устойчивую компанию
+                </p>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="relative pl-8 space-y-8">
+                    <div class="timeline-item relative">
+                        <div class="bg-gradient-to-br from-eco-bg to-white p-6 rounded-2xl border-l-4 border-eco shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                                    <span class="text-white font-bold text-lg">01</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-eco-dark mb-2">Аудит текущего состояния</h3>
+                                    <p class="text-gray-600">Анализ потребления ресурсов, выбросов CO₂, образования отходов. Определение базовых показателей.</p>
                                 </div>
                             </div>
                         </div>
-                        <h3 class="font-bold text-eco-dark mb-2">Эко-активист</h3>
-                        <div class="text-sm text-gray-600">До следующего: 250 XP</div>
-                        <div class="mt-3 bg-gray-200 rounded-full h-2">
-                            <div class="gradient-bg h-2 rounded-full" style="width: 75%"></div>
+                    </div>
+                    <div class="timeline-item relative">
+                        <div class="bg-gradient-to-br from-eco-bg to-white p-6 rounded-2xl border-l-4 border-eco shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                                    <span class="text-white font-bold text-lg">02</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-eco-dark mb-2">Разработка эко-стратегии</h3>
+                                    <p class="text-gray-600">Постановка целей по снижению воздействия на окружающую среду. Выбор приоритетных направлений.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Carbon Footprint -->
-                <div class="bg-white rounded-2xl p-6 shadow-xl card-hover border border-eco-bg">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">👣</span>
-                        </div>
-                        <span class="text-2xl font-bold text-eco-dark">-15%</span>
-                    </div>
-                    <h3 class="font-bold text-eco-dark mb-2">Углеродный след</h3>
-                    <p class="text-sm text-gray-600 mb-3">За последний месяц</p>
-                    <div class="space-y-2">
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Электричество</span>
-                            <span class="font-medium">120 кг CO₂</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Транспорт</span>
-                            <span class="font-medium">85 кг CO₂</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Отходы</span>
-                            <span class="font-medium">45 кг CO₂</span>
+                    <div class="timeline-item relative">
+                        <div class="bg-gradient-to-br from-eco-bg to-white p-6 rounded-2xl border-l-4 border-eco shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                                    <span class="text-white font-bold text-lg">03</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-eco-dark mb-2">Внедрение изменений</h3>
+                                    <p class="text-gray-600">Установка энергосберегающего оборудования, внедрение раздельного сбора, оптимизация логистики.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Achievements -->
-                <div class="bg-white rounded-2xl p-6 shadow-xl card-hover border border-eco-bg">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">🏆</span>
-                        </div>
-                        <span class="text-2xl font-bold text-eco-dark">8/20</span>
-                    </div>
-                    <h3 class="font-bold text-eco-dark mb-2">Достижения</h3>
-                    <p class="text-sm text-gray-600 mb-4">Разблокированные значки</p>
-                    <div class="grid grid-cols-4 gap-2">
-                        <div class="achievement-badge unlocked text-2xl" title="Первый шаг">🌱</div>
-                        <div class="achievement-badge unlocked text-2xl" title="Сортировка">♻️</div>
-                        <div class="achievement-badge unlocked text-2xl" title="Волонтёр">🤝</div>
-                        <div class="achievement-badge unlocked text-2xl" title="Энергия">💡</div>
-                        <div class="achievement-badge unlocked text-2xl" title="Транспорт">🚲</div>
-                        <div class="achievement-badge unlocked text-2xl" title="Вода">💧</div>
-                        <div class="achievement-badge unlocked text-2xl" title="Лес">🌳</div>
-                        <div class="achievement-badge unlocked text-2xl" title="Сообщество">👥</div>
-                        <div class="achievement-badge text-2xl" title="Замок">🔒</div>
-                        <div class="achievement-badge text-2xl" title="Замок">🔒</div>
-                        <div class="achievement-badge text-2xl" title="Замок">🔒</div>
-                        <div class="achievement-badge text-2xl" title="Замок">🔒</div>
-                    </div>
-                </div>
-
-                <!-- Volunteer Hours -->
-                <div class="bg-white rounded-2xl p-6 shadow-xl card-hover border border-eco-bg">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">⏰</span>
-                        </div>
-                        <span class="text-2xl font-bold text-eco-dark">24ч</span>
-                    </div>
-                    <h3 class="font-bold text-eco-dark mb-2">Волонтёрские часы</h3>
-                    <p class="text-sm text-gray-600 mb-4">В этом месяце</p>
-                    <div class="relative w-24 h-24 mx-auto">
-                        <svg class="w-24 h-24 transform -rotate-90">
-                            <circle cx="48" cy="48" r="40" stroke="#E5E7EB" stroke-width="8" fill="none"/>
-                            <circle cx="48" cy="48" r="40" stroke="#4CAF50" stroke-width="8" fill="none" 
-                                stroke-dasharray="251.2" stroke-dashoffset="100.48" class="volunteer-hours-ring"/>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-lg font-bold text-eco-dark">60%</span>
+                    <div class="timeline-item relative">
+                        <div class="bg-gradient-to-br from-eco-bg to-white p-6 rounded-2xl border-l-4 border-eco shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                                    <span class="text-white font-bold text-lg">04</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-eco-dark mb-2">Мониторинг и отчётность</h3>
+                                    <p class="text-gray-600">Регулярный замер показателей, подготовка экологической отчётности, корректировка стратегии.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Impact Stats -->
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="stat-card rounded-2xl p-6 shadow-xl">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center">
-                            <span class="text-3xl">🌳</span>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-bold text-eco-dark">12</div>
-                            <div class="text-gray-600">Посаженных деревьев</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="stat-card rounded-2xl p-6 shadow-xl">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center">
-                            <span class="text-3xl">♻️</span>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-bold text-eco-dark">85 кг</div>
-                            <div class="text-gray-600">Переработанных отходов</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="stat-card rounded-2xl p-6 shadow-xl">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center">
-                            <span class="text-3xl">💡</span>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-bold text-eco-dark">320 кВт·ч</div>
-                            <div class="text-gray-600">Сэкономленной энергии</div>
+                    <div class="timeline-item relative">
+                        <div class="bg-gradient-to-br from-eco-bg to-white p-6 rounded-2xl border-l-4 border-eco shadow-lg card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                                    <span class="text-white font-bold text-lg">05</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-eco-dark mb-2">Сертификация и коммуникация</h3>
+                                    <p class="text-gray-600">Получение эко-сертификатов, публикация результатов, информирование stakeholders.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -505,6 +430,224 @@
         </div>
     </section>
 
+    <!-- Cases Section -->
+    <section id="cases" class="py-20 bg-gradient-to-br from-eco-bg to-white relative">
+        <div class="container mx-auto px-4 fade-in-section">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-eco text-white px-4 py-2 rounded-full text-sm mb-4">
+                    📊 Реальные примеры
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-eco-dark mb-4">Анализ российских компаний</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    Примеры крупных предприятий и их экологические рейтинги
+                </p>
+            </div>
+            <div class="overflow-x-auto mobile-scroll pb-8">
+                <div class="flex gap-6 px-4 min-w-max">
+                    <!-- Company 1 -->
+                    <div class="bg-white rounded-2xl shadow-xl p-6 w-80 flex-shrink-0 card-hover border border-eco-bg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-eco-bg rounded-xl flex items-center justify-center mr-4 shadow-md">
+                                <span class="text-2xl">⛽</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-eco-dark text-lg">Газпром</h3>
+                                <p class="text-xs text-gray-500">Газовая промышленность</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm text-gray-600 font-medium">Эко-рейтинг</span>
+                                <span class="font-bold text-eco">68/100</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                                <div class="progress-bar h-3 rounded-full" style="width: 68%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Выбросы CO₂</span>
+                                <span class="font-semibold text-eco-dark">234 млн т</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Переработка отходов</span>
+                                <span class="font-semibold text-eco-dark">45%</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Зелёные инвестиции</span>
+                                <span class="font-semibold text-eco-dark">12% от бюджета</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Company 2 -->
+                    <div class="bg-white rounded-2xl shadow-xl p-6 w-80 flex-shrink-0 card-hover border border-eco-bg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-eco-bg rounded-xl flex items-center justify-center mr-4 shadow-md">
+                                <span class="text-2xl">🛢️</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-eco-dark text-lg">Лукойл</h3>
+                                <p class="text-xs text-gray-500">Нефтегазовая компания</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm text-gray-600 font-medium">Эко-рейтинг</span>
+                                <span class="font-bold text-eco">73/100</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                                <div class="progress-bar h-3 rounded-full" style="width: 73%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Выбросы CO₂</span>
+                                <span class="font-semibold text-eco-dark">189 млн т</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Переработка отходов</span>
+                                <span class="font-semibold text-eco-dark">52%</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Зелёные инвестиции</span>
+                                <span class="font-semibold text-eco-dark">18% от бюджета</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Company 3 -->
+                    <div class="bg-white rounded-2xl shadow-xl p-6 w-80 flex-shrink-0 card-hover border border-eco-bg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-eco-bg rounded-xl flex items-center justify-center mr-4 shadow-md">
+                                <span class="text-2xl">🏭</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-eco-dark text-lg">Норникель</h3>
+                                <p class="text-xs text-gray-500">Металлургия</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm text-gray-600 font-medium">Эко-рейтинг</span>
+                                <span class="font-bold text-eco">81/100</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                                <div class="progress-bar h-3 rounded-full" style="width: 81%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Выбросы CO₂</span>
+                                <span class="font-semibold text-eco-dark">156 млн т</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Переработка отходов</span>
+                                <span class="font-semibold text-eco-dark">67%</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Зелёные инвестиции</span>
+                                <span class="font-semibold text-eco-dark">25% от бюджета</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Company 4 -->
+                    <div class="bg-white rounded-2xl shadow-xl p-6 w-80 flex-shrink-0 card-hover border border-eco-bg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-eco-bg rounded-xl flex items-center justify-center mr-4 shadow-md">
+                                <span class="text-2xl">⚡</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-eco-dark text-lg">Росатом</h3>
+                                <p class="text-xs text-gray-500">Атомная энергетика</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm text-gray-600 font-medium">Эко-рейтинг</span>
+                                <span class="font-bold text-eco">85/100</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                                <div class="progress-bar h-3 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Выбросы CO₂</span>
+                                <span class="font-semibold text-eco-dark">42 млн т</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Переработка отходов</span>
+                                <span class="font-semibold text-eco-dark">78%</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Зелёные инвестиции</span>
+                                <span class="font-semibold text-eco-dark">32% от бюджета</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Company 5 -->
+                    <div class="bg-white rounded-2xl shadow-xl p-6 w-80 flex-shrink-0 card-hover border border-eco-bg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-eco-bg rounded-xl flex items-center justify-center mr-4 shadow-md">
+                                <span class="text-2xl">🏗️</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-eco-dark text-lg">СУЭК</h3>
+                                <p class="text-xs text-gray-500">Угольная промышленность</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm text-gray-600 font-medium">Эко-рейтинг</span>
+                                <span class="font-bold text-eco">62/100</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                                <div class="progress-bar h-3 rounded-full" style="width: 62%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Выбросы CO₂</span>
+                                <span class="font-semibold text-eco-dark">312 млн т</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Переработка отходов</span>
+                                <span class="font-semibold text-eco-dark">38%</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Зелёные инвестиции</span>
+                                <span class="font-semibold text-eco-dark">9% от бюджета</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Company 6 -->
+                    <div class="bg-white rounded-2xl shadow-xl p-6 w-80 flex-shrink-0 card-hover border border-eco-bg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-eco-bg rounded-xl flex items-center justify-center mr-4 shadow-md">
+                                <span class="text-2xl">🚗</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-eco-dark text-lg">КАМАЗ</h3>
+                                <p class="text-xs text-gray-500">Автопром</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm text-gray-600 font-medium">Эко-рейтинг</span>
+                                <span class="font-bold text-eco">76/100</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                                <div class="progress-bar h-3 rounded-full" style="width: 76%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Выбросы CO₂</span>
+                                <span class="font-semibold text-eco-dark">98 млн т</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
+                                <span class="text-gray-500">Переработка отходов</span>
+                                <span class="font-semibold text-eco-dark">61%</span>
+                            </div>
                             <div class="flex justify-between items-center p-2 bg-eco-bg rounded-lg">
                                 <span class="text-gray-500">Зелёные инвестиции</span>
                                 <span class="font-semibold text-eco-dark">21% от бюджета</span>
@@ -768,64 +911,6 @@
         document.querySelectorAll('#cases').forEach(section => {
             progressObserver.observe(section);
         });
-
-        // Initialize Leaflet map
-        function initMap() {
-            const map = L.map('map').setView([55.7558, 37.6173], 10);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
-
-            // Add markers for eco-activities
-            const locations = [
-                { lat: 55.7558, lng: 37.6173, title: 'Пункт приёма пластика', type: 'recycling' },
-                { lat: 55.7612, lng: 37.6095, title: 'Эко-постер', type: 'poster' },
-                { lat: 55.7489, lng: 37.6225, title: 'Зона посадки деревьев', type: 'trees' },
-                { lat: 55.7690, lng: 37.6350, title: 'Волонтёрский центр', type: 'volunteer' }
-            ];
-
-            const icons = {
-                recycling: '♻️',
-                poster: '📢',
-                trees: '🌳',
-                volunteer: '🤝'
-            };
-
-            locations.forEach(loc => {
-                const customIcon = L.divIcon({
-                    html: `<div style="font-size: 24px; text-align: center;">${icons[loc.type]}</div>`,
-                    className: 'custom-div-icon',
-                    iconSize: [30, 30],
-                    iconAnchor: [15, 15]
-                });
-                L.marker([loc.lat, loc.lng], { icon: customIcon })
-                    .addTo(map)
-                    .bindPopup(`<b>${loc.title}</b>`);
-            });
-        }
-
-        // Initialize map when community section is visible
-        const mapObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && document.getElementById('map')) {
-                    initMap();
-                    mapObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        document.querySelectorAll('#community').forEach(section => {
-            mapObserver.observe(section);
-        });
-
-        // Quiz option selection
-        function selectQuizOption(element) {
-            document.querySelectorAll('.quiz-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            element.classList.add('selected');
-            element.querySelector('input[type="radio"]').checked = true;
-        }
     </script>
 </body>
 </html>
